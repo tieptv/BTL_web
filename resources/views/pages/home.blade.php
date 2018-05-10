@@ -16,7 +16,7 @@
                                         <h2 class="head-2">{{$sl->content}}</h2>
                                         <h2 class="head-3">Collection</h2>
                                         <p class="category"><span>New stylish shirts, pants &amp; Accessories</span></p>
-                                        <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                                        <p><a class="btn btn-primary">Shop Collection</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="shop.html" class="f-product-1" style="background-image: url(source/images/{{$product1->image_link}});">
+                        <a href="product/{{$product1->id}}" class="f-product-1" style="background-image: url(source/images/{{$product1->image_link}});">
                             <div class="desc">
                                 <h2>Fahion <br>for <br>men</h2>
                             </div>
@@ -47,9 +47,9 @@
                         <div class="row">
                             @foreach($new_product as $pro)
                             <div class="col-md-6">
-                                <a href="" class="f-product-2" style="background-image: url(source/images/{{$pro->image_link}});">
+                                <a href="product/{{$pro->id}}" class="f-product-2" style="background-image: url(source/images/{{$pro->image_link}});">
                                     <div class="desc">
-                                        <h2>New <br>Arrival <br>Dress</h2>
+                                        <h2>New <br>{{$pro->name}} <br>${{$pro->price}}</h2>
                                     </div>
                                 </a>
                             </div>
@@ -76,15 +76,14 @@
                                 <p class="tag"><span class="new">New</span></p>
                                 <div class="cart">
                                     <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
+                                        <span class="addtocart"><a href="addCard/{{$v->id}}"><i class="icon-shopping-cart"></i></a></span> 
+                                        <span><a href="product/{{$v->id}}"><i class="icon-eye"></i></a></span> 
                                         <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
                                     </p>
                                 </div>
                             </div>
                             <div class="desc">
-                                <h3><a href="product/{{$v->id}}">Floral Dress</a></h3>
+                                <h3><a href="product/{{$v->id}}">{{$v->name}}</a></h3>
                                 <p class="price"><span>${{$v->price}}</span></p>
                             </div>
                         </div>
@@ -114,7 +113,7 @@
                                 <div class="text-rights">
                                     <h3 class="title">Just hurry up limited offer!</h3>
                                     <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                    <p><a href="shop.html" class="btn btn-primary">Shop Now</a> <a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+                                    <p><a href="shop" class="btn btn-primary">Shop Now</a> <a class="btn btn-primary btn-outline">Read more</a></p>
                                 </div>
                             </div>
                         </div>
@@ -132,159 +131,42 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach($product as $pro)
                     <div class="col-md-3 text-center">
                         <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-9.jpg);">
+                            <div class="product-img" style="background-image: url(source/images/{{$pro->image_link}});">
                                 <p class="tag"><span class="sale">Sale</span></p>
                                 <div class="cart">
                                     <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
+                                        <span class="addtocart"><a href="addCard/{{$pro->id}}"><i class="icon-shopping-cart"></i></a></span> 
+                                        <span><a href="product/{{$pro->id}}"><i class="icon-eye"></i></a></span> 
+                                        <span><a><i class="icon-heart3"></i></a></span>
                                     </p>
                                 </div>
                             </div>
                             <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$199.00</span> <span class="sale">$300.00</span> </p>
+                                <h3><a href="product/{{$pro->id}}">{{$pro->name}}</a></h3>
+                                <p class="price"><span>${{$pro->price}}</span> </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-10.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-11.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-12.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-13.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-14.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-15.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="product-entry">
-                            <div class="product-img" style="background-image: url(source/images/item-16.jpg);">
-                                <p class="tag"><span class="new">New</span></p>
-                                <div class="cart">
-                                    <p>
-                                        <span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-                                        <span><a href="product-detail.html"><i class="icon-eye"></i></a></span> 
-                                        <span><a href="#"><i class="icon-heart3"></i></a></span>
-                                        <span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="desc">
-                                <h3><a href="shop.html">Floral Dress</a></h3>
-                                <p class="price"><span>$300.00</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                <div class="row">
+                            <div class="col-md-12">
+                                <ul class="pagination">
+                                    @if($product->currentPage() != 1)
+                                    <li><a href="{!! str_replace('/?','?',$product->url($product->currentPage() - 1)) !!}">&laquo;</a></li>
+                                    @endif
+                                    @for($i=1;$i<=$product->lastPage(); $i = $i + 1)
+                                    <li class="{!! ($product->currentPage() != $i) ? 'active' : '' !!}"><a href="{!! str_replace('/?','?',$product->url($i)) !!}">{!! $i !!}</a></li>
+                                    @endfor
+                                    @if($product->currentPage() != $product->lastPage() )
+                                    <li><a href="{!! str_replace('/?','?',$product->url($product->currentPage() + 1)) !!}">&raquo;</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
             </div>
         </div>
 

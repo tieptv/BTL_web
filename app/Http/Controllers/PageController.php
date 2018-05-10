@@ -14,16 +14,16 @@ use App\Contact;
 use App\Slide;
 use App\ProductDetail;
 use Cart;
-
+use Auth;
 
 class PageController extends Controller
 {
 	public function getHome(){
 		$slide = Slide::all();
-	//	$new_product=Product::all();
+		$product=Product::paginate(4);
 		$new_product=Product::orderBy('id','desc')->paginate(5);
-		$most_views_product = Product::orderBy('view','desc')->paginate(5);
-		return view('pages.home',compact('slide','new_product','most_views_product'));
+		$most_views_product = Product::orderBy('view','desc')->paginate(8);
+		return view('pages.home',compact('slide','product','new_product','most_views_product'));
 	}
 
 	public function getProduct($id){
@@ -31,7 +31,7 @@ class PageController extends Controller
         $product -> view +=1;
         $product->update();
         $comments = Comment::all();
-        $rel_product = Product::where('catalog_id',$product->catalog_id)->paginate(4);
+        $rel_product = Product::where('catalog_id',$product->catalog_id)->paginate(3);
 		return view('pages.product_detail',compact('product','rel_product','comments'));
 	}
 
@@ -44,7 +44,8 @@ class PageController extends Controller
 
     public function getCart(){
     	$cart = Cart::content();
-		return view('pages.cart',compact('cart'));
+        $recommend_product = Product::paginate(4);
+		return view('pages.cart',compact('cart','recommend_product'));
 	}
 	public function addCart($id)
     {
@@ -128,7 +129,8 @@ class PageController extends Controller
     }
 
 	public function getShop(){
-		return view('pages.shop');
+        $product = Product::paginate(8);
+		return view('pages.shop',compact('product'));
 	}
 	public function getAbout(){
 		return view('pages.about');

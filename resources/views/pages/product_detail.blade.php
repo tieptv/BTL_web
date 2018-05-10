@@ -97,7 +97,8 @@
 										
 						         </div>
 						         <div id="manufacturer" class="tab-pane fade">
-						         	<p>{{$product->manafacture->name}}</p>
+						         	<p><span>{{$product->manafacture->name}}</span><br>
+						         		<span>{{$product->manafacture->description}}</span></p>
 								      
 								   </div>
 								   <div id="review" class="tab-pane fade">
@@ -251,7 +252,7 @@
 								<p class="tag"><span class="new">New</span></p>
 								<div class="cart">
 									<p>
-										<span class="addtocart"><a href="cart"><i class="icon-shopping-cart"></i></a></span> 
+										<span class="addtocart"><a href="addCart/{{$pro->id}}"><i class="icon-shopping-cart"></i></a></span> 
 										<span><a href="product/{{$pro->id}}"><i class="icon-eye"></i></a></span> 
 										<span><a href="#"><i class="icon-heart3"></i></a></span>
 										<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>

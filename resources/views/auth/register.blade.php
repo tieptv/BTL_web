@@ -39,6 +39,21 @@
                             </div>
                         </div>
 
+                         <div class="form-group">
+                            <label for="address" class="col-md-4 control-label">Address</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" required>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="phone" class="col-md-4 control-label">Phone Number</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

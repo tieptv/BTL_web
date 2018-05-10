@@ -19,14 +19,13 @@
 				<div class="col-xs-14 text-right menu-1">
 					<ul>
 					
-						<li class="active"><a href="home">Home</a></li>
+						<li class="active"><a href="homePage">Home</a></li>
 						<li class="has-dropdown">
-							<a href="{{route('shop')}}">Shop</a>
+							<a href="shop">Shop</a>
 							<ul class="dropdown">
 								<li><a href="{{route('cart')}}">Shipping Cart</a></li>
 								<li><a href="{{route('order')}}">Checkout</a></li> 
 								<li><a href="source/order-complete.html">Order Complete</a></li>
-								<li><a href="source/add-to-wishlist.html">Wishlist</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
