@@ -6,46 +6,51 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
+                        <h1 class="page-header">User
                             <small>Edit</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                       <div class="col-lg-7" style="padding-bottom:120px">
+                        @if(count($errors)>0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                    {{$err}}<br>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(session('thongbao'))
+                            <div class="alert alert-success">
+                                {{session('thongbao')}}
+                            </div>
+                        @endif
+                 
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+                        <form action="admin/user/edit/{{$user->id}}" method="POST">
+                               
+                            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
                             <div class="form-group">
-                                <label>Category Parent</label>
-                                <select class="form-control">
-                                    <option value="0">Please Choose Category</option>
-                                    <option value="">Tin Tức</option>
-                                </select>
+                                <label>User Name</label>
+                                 <input class="form-control" name="name" value="{{$user->name}}" placeholder="Please Enter User Name" />
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Email</label>
+                                <input class="form-control" name="email" value="{{$user->email}}" placeholder="Please Enter Email" />
                             </div>
                             <div class="form-group">
-                                <label>Category Order</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Order" />
+                                <label>Address</label>
+                                <input class="form-control" name="address" value="{{$user->address}}" placeholder="Please Enter Address" />
                             </div>
                             <div class="form-group">
-                                <label>Category Keywords</label>
-                                <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" />
+                                <label>Password</label>
+                                <input class="form-control" name="password" value="{{$user->password}}" placeholder="Please Enter Password" />
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Phone</label>
+                                <input class="form-control" name="phone" value="{{$user->phone}}" placeholder="Please Enter Phone" />
                             </div>
-                            <div class="form-group">
-                                <label>Category Status</label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" checked="" type="radio">Visible
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoStatus" value="2" type="radio">Invisible
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-default">Category Edit</button>
+                            <button type="submit" class="btn btn-default">User Edit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

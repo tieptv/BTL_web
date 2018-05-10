@@ -102,11 +102,15 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	Route::group(['prefix'=>'user'],function(){
 
-		Route::get('liUserst','UserController@getList');
+		Route::get('list','UserController@getList');
 
-		Route::get('add','UserController@getAdd');
+ 		Route::get('add','UserController@getAdd');
+        Route::post('add','UserController@postAdd');
 
-		Route::get('edit','UserController@getEdit');
+		Route::get('edit/{id}','UserController@getEdit');
+		
+		Route::post('edit/{id}','UserController@postEdit');
+		Route::get('delete/{id}','UserController@getDelete');
 
 	});
 
