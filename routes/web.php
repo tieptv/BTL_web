@@ -28,6 +28,8 @@ Route::get('product_type/{id}',['as'=>'product_type','uses'=>'PageController@get
 Route::get('shop',['as'=>'shop','uses'=>'PageController@getShop']);
 Route::get('about',['as'=>'about','uses'=>'PageController@getAbout']);
 Route::get('contact',['as'=>'contact','uses'=>'PageController@getContact']);
+Route::post('contact',['as'=>'contact','uses'=>'PageController@postContact']);
+
 
 Route::get('cart',['as'=>'cart','uses'=>'PageController@getCart']);
 Route::get('addCart/{id}',['as'=>'addCart','uses'=>'PageController@addCart']);

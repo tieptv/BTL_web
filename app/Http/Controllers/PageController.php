@@ -136,9 +136,54 @@ class PageController extends Controller
 	public function getAbout(){
 		return view('pages.about');
 	}
+
 	public function getContact(){
 		return view('pages.contact');
 	}
+    public function postContact(Request $request)
+    {
+        $this->validate($request,
+            [
+                'email'=>'required|min:10|max:30',
+                'name'=>'required|min:3|max:30',
+                'title'=>'required|min:3|max:30',
+                'message'=>'required|min:6',
+            ],
+            [
+                'email.required'=>'Vui lòng nhập Email',
+                'email.min'=>'Email tối thiểu 12 ký tự',
+                'email.max'=>'Email tối đa 50 ký tự',
+                'name.required'=>'Vui lòng nhập họ tên',
+                'name.min'=>'Họ tên tối thiểu 3 ký tự',
+                'name.max'=>'Họ tên tối đa 50 ký tự',
+                'title.required'=>'Vui lòng nhập tiêu đề',
+                'title.min'=>'Tiêu đề tối thiểu 3 ký tự',
+                'title.max'=>'Tiêu đề tối đa 30 ký tự',
+                'message'=>'Vui lòng nhập tin nhắn',
+                'message'=>'Tin nhắn tối thiểu 2 ký tự'
+            ]);
+        if(Auth::check())
+            {
+                $contact = new Contact();
+                $contact->user_id = Auth::user()->id;
+                $contact->name = Auth::user()->name;
+                $contact->email = Auth::user()->email;
+                $contact->title = $request->title;
+                $contact->message = $request->message;
+                $contact ->save();
+            }
+            else
+            {
+                $contact = new Contact();
+                $contact->user_id = 0;
+                $contact->name = $request->name;
+                $contact->email = $request->email;
+                $contact->title = $request->title;
+                $contact->message = $request->message;
+                $contact ->save();
+            }
+            return redirect()->back()->with('message','Gửi tin nhắn thành công !');
+    }
 	
     public function getCheckout(){
 		return view('pages.checkout');
