@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Catagory;
 use App\Manufacture;
-use App\Order;
-use App\OrderDetail;
+use App\Oder;
+use App\OderDetail;
 use App\User;
 use App\Comment;
 use App\Contact;
@@ -99,7 +99,7 @@ class PageController extends Controller
             ]);
         if(Auth::check())
             {
-                $order = new Order();
+                $order = new Oder();
                 $order->user_id = Auth::User()->id;
                 $order->date_order = Date('Y-m-d');
                 $total = ((float)Cart::Subtotal());
@@ -112,7 +112,7 @@ class PageController extends Controller
                 $order->save();
                 foreach($content as $item)
                 {
-                    $order_detail = new OrderDetail();
+                    $order_detail = new OderDetail();
                     $order_detail->order_id = $order->id;
                     $order_detail->product_id = $item->id;
                     $order_detail->quantity = $item->qty;
@@ -125,7 +125,8 @@ class PageController extends Controller
                 return redirect()->route('login');
             }
             Cart::destroy();
-            return redirect()->back()->with('message','Gửi đơn hàng thành công!');
+         //   return redirect()->back()->with('message','Gửi đơn hàng thành công!');
+            return view('pages.order_complete');
     }
 
 	public function getShop(){

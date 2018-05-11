@@ -119,4 +119,5 @@ Route::group(['prefix'=>'admin'],function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PageController@getHome')->name('home');
+Route::get('logout',['as'=>'logout','uses'=>'LoginController@logout']);

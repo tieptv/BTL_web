@@ -27,7 +27,7 @@
 						<div class="process-wrap">
 							<div class="process text-center active">
 								<p><span>01</span></p>
-								<h3>Shopping Cart</h3>
+								<a href="cart"><h3>Shopping Cart</h3></a>
 							</div>
 							<div class="process text-center active">
 								<p><span>02</span></p>

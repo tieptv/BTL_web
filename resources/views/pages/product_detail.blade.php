@@ -12,6 +12,8 @@
 											<p class="tag"><span class="sale">Sale</span></p>
 										</div> 
 
+									
+
 										<div class="thumb-nail">
 											@foreach($rel_product as $pro)
 											<a href="product/{{$pro->id}}" class="thumb-img" style="background-image: url(source/images/{{$pro->image_link}});"></a>

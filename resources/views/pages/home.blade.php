@@ -76,7 +76,7 @@
                                 <p class="tag"><span class="new">New</span></p>
                                 <div class="cart">
                                     <p>
-                                        <span class="addtocart"><a href="addCard/{{$v->id}}"><i class="icon-shopping-cart"></i></a></span> 
+                                        <span class="addtocart"><a href="addCart/{{$v->id}}"><i class="icon-shopping-cart"></i></a></span> 
                                         <span><a href="product/{{$v->id}}"><i class="icon-eye"></i></a></span> 
                                         <span><a href="#"><i class="icon-heart3"></i></a></span>
                                     </p>
@@ -138,7 +138,7 @@
                                 <p class="tag"><span class="sale">Sale</span></p>
                                 <div class="cart">
                                     <p>
-                                        <span class="addtocart"><a href="addCard/{{$pro->id}}"><i class="icon-shopping-cart"></i></a></span> 
+                                        <span class="addtocart"><a href="addCart/{{$pro->id}}"><i class="icon-shopping-cart"></i></a></span> 
                                         <span><a href="product/{{$pro->id}}"><i class="icon-eye"></i></a></span> 
                                         <span><a><i class="icon-heart3"></i></a></span>
                                     </p>

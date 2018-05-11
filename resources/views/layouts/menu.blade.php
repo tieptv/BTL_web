@@ -25,7 +25,7 @@
 							<ul class="dropdown">
 								<li><a href="{{route('cart')}}">Shipping Cart</a></li>
 								<li><a href="{{route('order')}}">Checkout</a></li> 
-								<li><a href="source/order-complete.html">Order Complete</a></li>
+								
 							</ul>
 						</li>
 						<li class="has-dropdown">
@@ -40,6 +40,19 @@
 						<li><a href="{{route('about')}}">About</a></li>
 						<li><a href="{{route('contact')}}">Contact</a></li>
 						<li><a href="{{route('cart')}}"><i class="icon-shopping-cart"></i> Cart [${{Cart::Subtotal()}}]</a></li>
+						
+						 @if(Auth::check())
+			<ul>
+			   <li class="active" style="margin-right: 20px;"><a href="homePage">{{Auth::User()->name}}</a></li> 
+			   <li class="active"><a href="{{route('logout')}}">Logout</a></li> 
+			</ul>
+      			@else
+			<ul>
+			    <li class="active" style="margin-right: 20px;"><a href="{{route('login')}}">Login</a></li> 
+			    <li class="active"><a href="{{route('register')}}">Register</a></li> 
+			</ul>
+			@endif
+			
 					</ul>
 				</div>
 			</div>
