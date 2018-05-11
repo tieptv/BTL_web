@@ -23,7 +23,7 @@
 								</div>
 								<div class="col-md-7">
 									<div class="desc">
-										<h3>Dummy Product Name</h3>
+										<h3>{{$product->name}}</h3>
 										<p class="price">
 											<span>${{$product->price}}</span> 
 											<span class="rate text-right">
@@ -103,71 +103,114 @@
 						         		<span>{{$product->manafacture->description}}</span></p>
 								      
 								   </div>
+
+
+
 								   <div id="review" class="tab-pane fade">
 								   	<div class="row">
 								   		<div class="col-md-7">
-								   			<h3>23 Reviews</h3>
+								   			<h3>{{$count_comment}} Review</h3>
+                                            @foreach($comments as $comment)
+					                       @if($comment->product_id == $product->id)
 								   			<div class="review">
 										   		<div class="user-img" style="background-image: url(source/images/person1.jpg)"></div>
 										   		<div class="desc">
 										   			<h4>
-										   				<span class="text-left">Jacob Webb</span>
-										   				<span class="text-right">14 March 2018</span>
+										   				<span class="text-left">{{$comment->user->name}} </span>
+										   				<span class="text-right">{{$comment->date}}</span>
 										   			</h4>
+										   			@if($comment->rate==5)
 										   			<p class="star">
 										   				<span>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
-										   					<i class="icon-star-half"></i>
-										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-full"></i>
+										   					<i class="icon-star-full"></i>
 									   					</span>
 									   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
 										   			</p>
-										   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-										   		</div>
-										   	</div>
-										   	<div class="review">
-										   		<div class="user-img" style="background-image: url(source/images/person2.jpg)"></div>
-										   		<div class="desc">
-										   			<h4>
-										   				<span class="text-left">Jacob Webb</span>
-										   				<span class="text-right">14 March 2018</span>
-										   			</h4>
+										   			@endif
+										   			@if($comment->rate==4)
 										   			<p class="star">
 										   				<span>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
-										   					<i class="icon-star-half"></i>
+										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-empty"></i>
 									   					</span>
 									   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
 										   			</p>
-										   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
-										   		</div>
-										   	</div>
-										   	<div class="review">
-										   		<div class="user-img" style="background-image: url(source/images/person3.jpg)"></div>
-										   		<div class="desc">
-										   			<h4>
-										   				<span class="text-left">Jacob Webb</span>
-										   				<span class="text-right">14 March 2018</span>
-										   			</h4>
+										   			@endif
+										   			@if($comment->rate==3)
 										   			<p class="star">
 										   				<span>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
 										   					<i class="icon-star-full"></i>
-										   					<i class="icon-star-half"></i>
+										   					<i class="icon-star-empty"></i>
 										   					<i class="icon-star-empty"></i>
 									   					</span>
 									   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
 										   			</p>
-										   			<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrov</p>
+										   			@endif
+										   			@if($comment->rate==2)
+										   			<p class="star">
+										   				<span>
+										   					<i class="icon-star-full"></i>
+										   					<i class="icon-star-full"></i>
+										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-empty"></i>
+									   					</span>
+									   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+										   			</p>
+										   			@endif
+										   			@if($comment->rate==1)
+										   			<p class="star">
+										   				<span>
+										   					<i class="icon-star-full"></i>
+										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-empty"></i>
+										   					<i class="icon-star-empty"></i>
+									   					</span>
+									   					<span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+										   			</p>
+										   			@endif
+										   			<p>{{$comment->content}}</p>
 										   		</div>
-										   	</div>
+ 										   	</div>
+                                            @endif
+						                    @endforeach
+
+										   @if(Auth::check())
+										   <h5 style="color: #365899">{{Auth::user()->name}}</h5>
+										   <form action="product/{{$product->id}}" method="post" enctype="multipart/form-data">
+	 					                    {{csrf_field()}}
+	 					                    <h5>Đánh giá: <span class="text-success">
+	 					                  	<select style="border-color: #fff" name="rate">
+			 		                		<option value="5">&#9733&#9733&#9733&#9733&#9733 xuất sắc</option>
+			 		                   		<option value="4">&#9733&#9733&#9733&#9733&#9734 tốt</option>
+			 		                  		<option value="3">&#9733&#9733&#9733&#9734&#9734 khá</option>
+			 		                 		<option value="2">&#9733&#9733&#9734&#9734&#9734 trung bình</option>
+			 		                  		<option value="1">&#9733&#9734&#9734&#9734&#9734 tồi</option>
+			 		                 		</select>
+
+	 			                                 </span></h5>
+	 					                    	@endif
+				                         <div class="form-group">
+			                               <label for="comment">Comment:</label>
+			                               <textarea class="form-control" rows="5" id="comment" name="comment" ></textarea>
+		                                   <input type="hidden" name="product_id" value="{{$product->id}}">
+			                              <button type="submit " class="btn btn-primary" style="width: 250px; margin-top: 10px;">Gửi bình luận  </button>
+		                                   </form>
+		                                  </div>
 								   		</div>
+
+
+
 								   		<div class="col-md-4 col-md-push-1">
 								   			<div class="rating-wrap">
 									   			<h3>Give a Review</h3>
@@ -178,9 +221,9 @@
 									   					<i class="icon-star-full"></i>
 									   					<i class="icon-star-full"></i>
 									   					<i class="icon-star-full"></i>
-									   					(98%)
+									   					
 								   					</span>
-								   					<span>20 Reviews</span>
+								   					<span>{{$star5}} Reviews</span>
 									   			</p>
 									   			<p class="star">
 									   				<span>
@@ -189,9 +232,9 @@
 									   					<i class="icon-star-full"></i>
 									   					<i class="icon-star-full"></i>
 									   					<i class="icon-star-empty"></i>
-									   					(85%)
+									   					
 								   					</span>
-								   					<span>10 Reviews</span>
+								   					<span>{{$star4}} Reviews</span>
 									   			</p>
 									   			<p class="star">
 									   				<span>
@@ -200,9 +243,9 @@
 									   					<i class="icon-star-full"></i>
 									   					<i class="icon-star-empty"></i>
 									   					<i class="icon-star-empty"></i>
-									   					(98%)
+									   					
 								   					</span>
-								   					<span>5 Reviews</span>
+								   					<span>{{$star3}} Reviews</span>
 									   			</p>
 									   			<p class="star">
 									   				<span>
@@ -211,9 +254,9 @@
 									   					<i class="icon-star-empty"></i>
 									   					<i class="icon-star-empty"></i>
 									   					<i class="icon-star-empty"></i>
-									   					(98%)
+									   					
 								   					</span>
-								   					<span>0 Reviews</span>
+								   					<span>{{$star2}} Reviews</span>
 									   			</p>
 									   			<p class="star">
 									   				<span>
@@ -222,9 +265,9 @@
 									   					<i class="icon-star-empty"></i>
 									   					<i class="icon-star-empty"></i>
 									   					<i class="icon-star-empty"></i>
-									   					(98%)
+									   					
 								   					</span>
-								   					<span>0 Reviews</span>
+								   					<span>{{$star1}} Reviews</span>
 									   			</p>
 									   		</div>
 								   		</div>

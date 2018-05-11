@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Catagory;
@@ -31,8 +32,15 @@ class PageController extends Controller
         $product -> view +=1;
         $product->update();
         $comments = Comment::all();
+        $count_comment= DB::table('Comment')->where('product_id','=',$id)->get()->count();
+        $star1=DB::table('Comment')->where([['product_id','=',$id],['rate','=',1]])->get()->count();
+        $star2=DB::table('Comment')->where([['product_id','=',$id],['rate','=',2]])->get()->count();
+        $star3=DB::table('Comment')->where([['product_id','=',$id],['rate','=',3]])->get()->count();
+        $star4=DB::table('Comment')->where([['product_id','=',$id],['rate','=',4]])->get()->count();
+        $star5=DB::table('Comment')->where([['product_id','=',$id],['rate','=',5]])->get()->count();
+
         $rel_product = Product::where('catalog_id',$product->catalog_id)->paginate(3);
-		return view('pages.product_detail',compact('product','rel_product','comments'));
+		return view('pages.product_detail',compact('product','rel_product','comments','count_comment','star1','star2','star3','star4','star5'));
 	}
 
 	public function getProductType($id)
@@ -193,5 +201,32 @@ class PageController extends Controller
     {
         $product = Product::where('name','like','%'.$request->key.'%')->get();
         return view('pages.search',compact('product'));
+    }
+     public function comment(Request $request)
+    {
+        $this->validate($request,
+            [
+                'comment'=>'required|min:3',
+            ],
+            [
+                'comment.required'=>'Vui lòng nhập bình luận',
+                'comment.min'=>'Bình luận tối thiểu 3 ký tự'
+            ]);
+        if(Auth::check())
+        {   
+            $comment = new Comment();
+            $now=getdate();
+            $date = $now["mday"] . "-" . $now["mon"] . "-" . $now["year"]; 
+            $comment->date=$date;
+            $comment->rate = $request->rate;
+            $comment->user_id = Auth::user()->id;
+            $comment->product_id = $request->product_id;
+            $comment->content = $request->comment;
+            $comment->save();
+        }else
+        {
+            return redirect()->route('login');
+        }
+        return redirect()->back();
     }
 }
