@@ -72,7 +72,7 @@
   width: 100%;
   border: 3px solid #00B4CC;
   padding: 5px;
-  height: 20px;
+ 
   border-radius: 5px;
   outline: none;
   color: #9DBFAF;
@@ -83,13 +83,14 @@
 }
 
 .searchButton {
+	border-radius: 7px;
   position:  absolute;
     right: -70px;
   width: 80px;
-  height: 36px;
+  height: 49px;
   border: 1px solid #00B4CC;
   background: #00B4CC;
-  text-align: left;
+  text-align: center;
   color: #fff;
  }
 .wrap{

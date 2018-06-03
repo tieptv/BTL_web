@@ -9,9 +9,9 @@
 						
 						<div class="search">
 	        				<form action="{{route('search')}}" method="GET" enctype="multipart/form-data">
-	        		        	<input type="text" name="key" class="searchTerm" placeholder="Tìm kiếm">
+	        		        	<input type="text" name="key" class="searchTerm">
 				                 <button type="submit" class="searchButton">
-        <i class="fa fa-search"></i>
+        <i class="fa fa-search"></i>Search
      </button>
                           
 	       		 			</form>	  
