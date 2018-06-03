@@ -59,6 +59,48 @@
 	<![endif]-->
 	@yield('header.css')
 
+
+	<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+		.search {
+  width: 100%;
+  
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position:  absolute;
+    right: -70px;
+  width: 80px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: left;
+  color: #fff;
+ }
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+	</style>
+
 	</head>
 	<body>
 		

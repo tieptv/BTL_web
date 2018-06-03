@@ -7,12 +7,12 @@
                             <h2><i class="icon-paperplane"></i>Sign Up for a Newsletter</h2>
                         </div>
                         <div class="col-md-6">
-                            <form class="form-inline qbstp-header-subscribe">
+                            <form class="form-inline qbstp-header-subscribe" action="{{route('search')}}">
                                 <div class="row">
                                     <div class="col-md-12 col-md-offset-0">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="email" placeholder="Enter your email">
-                                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                                            <input type="text" class="form-control" id="email" name="key" placeholder="Search">
+                                            <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
                                 </div>

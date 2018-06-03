@@ -76,9 +76,9 @@
 							<div class="one-eight text-center">
 								<div class="display-tc">
 									
-									<a href="addQtyCart/{{$item->rowId}}"><button type="button" class="btn btn-secondary">+</button></a>
+									<a href="addQtyCart/{{$item->rowId}}"><button type="button" data-type="plus" class="quantity-left-plus btn">+</button></a>
 									<p>{{$item->qty}}</p>
-    								<a href="minusQtyCart/{{$item->rowId}}"><button type="button" class="btn btn-secondary">-</button></a>
+    								<a href="minusQtyCart/{{$item->rowId}}"><button type="button" data-type="minus" class="quantity-right-minus btn"> -</button></a>
     								
 								</div>
 							</div>
@@ -89,7 +89,7 @@
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<a href="#" class="closed"></a>
+									<a href="removeCart/{{$item->rowId}}" class="closed"></a>
 								</div>
 							</div>
 						</div>

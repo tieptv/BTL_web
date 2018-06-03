@@ -7,14 +7,16 @@
 				</div>
 				<div class="col-xs-4">
 						
-						<div class="form-control">
+						<div class="search">
 	        				<form action="{{route('search')}}" method="GET" enctype="multipart/form-data">
-	        		        	<input type="text" name="key" class="textbox" placeholder="Tìm kiếm">
-				                <input type="submit"" id="submit">
-
+	        		        	<input type="text" name="key" class="searchTerm" placeholder="Tìm kiếm">
+				                 <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+                          
 	       		 			</form>	  
 		    			</div>
-					
+		    	
 				</div>
 				<div class="col-xs-14 text-right menu-1">
 					<ul>
